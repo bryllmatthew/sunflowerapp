@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "111122714679",
+    "project_id": "sunflower-app-66a5d",
+    "storage_bucket": "sunflower-app-66a5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111122714679:android:04dda1ba0e24d31496efb2",
+        "android_client_info": {
+          "package_name": "com.flutterflow.sunflowerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111122714679-tb8sn189qqra3mcoa6ud6gjvq49n00h9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterflow.sunflowerapp",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "111122714679-tej67033d37sv142vhuv0skjp7qlso1t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC29BB_sbGf94uGAJhTb0o86YS_1yoN_qE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111122714679-tej67033d37sv142vhuv0skjp7qlso1t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "111122714679-89i97qprgvk739ggcj8h2p81mqcip2lc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutterflow.sunflowerapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
