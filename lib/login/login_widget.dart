@@ -1,4 +1,4 @@
-import '../auth/auth_util.dart';
+import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -15,6 +15,7 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  ApiCallResponse loginnsuccess;
   TextEditingController emailController;
   TextEditingController passwordController;
   bool passwordVisibility;
@@ -274,22 +275,32 @@ class _LoginWidgetState extends State<LoginWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              final user = await signInWithEmail(
-                                context,
-                                emailController.text,
-                                passwordController.text,
+                              loginnsuccess = await UserLoginCall.call(
+                                username: emailController.text,
+                                password: passwordController.text,
                               );
-                              if (user == null) {
-                                return;
+                              if ((loginnsuccess?.succeeded ?? true)) {
+                                await Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HomeWidget(),
+                                  ),
+                                  (r) => false,
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Login Error',
+                                      style: TextStyle(),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor: Color(0x00000000),
+                                  ),
+                                );
                               }
 
-                              await Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LoginWidget(),
-                                ),
-                                (r) => false,
-                              );
+                              setState(() {});
                             },
                             text: 'Log in',
                             options: FFButtonOptions(

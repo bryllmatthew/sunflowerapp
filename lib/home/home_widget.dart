@@ -183,7 +183,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           Duration(milliseconds: 2000),
                                           () => setState(() {}),
                                         ),
-                                        onFieldSubmitted: (_) async {},
                                         autofocus: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
