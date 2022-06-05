@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>111122714679-89i97qprgvk739ggcj8h2p81mqcip2lc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.111122714679-89i97qprgvk739ggcj8h2p81mqcip2lc</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>111122714679-tb8sn189qqra3mcoa6ud6gjvq49n00h9.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDZAlFqUzxNZ869SFGwGeBj02wS7OCxGfc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>111122714679</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.flutterflow.sunflowerapp</string>
+	<key>PROJECT_ID</key>
+	<string>sunflower-app-66a5d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sunflower-app-66a5d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:111122714679:ios:c3fc3fff9e5cee7296efb2</string>
+</dict>
+</plist>
