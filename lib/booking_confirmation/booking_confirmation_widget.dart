@@ -1,4 +1,3 @@
-import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -83,15 +82,13 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        AuthUserStreamWidget(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(150),
-                            child: Image.asset(
-                              'assets/images/pexels-joe-alexander-2702692.jpg',
-                              width: MediaQuery.of(context).size.width * 0.4,
-                              height: 150,
-                              fit: BoxFit.cover,
-                            ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(150),
+                          child: Image.asset(
+                            'assets/images/pexels-joe-alexander-2702692.jpg',
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            height: 150,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ],

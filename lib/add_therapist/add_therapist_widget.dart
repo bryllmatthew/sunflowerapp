@@ -1,11 +1,8 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -237,16 +234,8 @@ class _AddTherapistWidgetState extends State<AddTherapistWidget> {
                   Align(
                     alignment: AlignmentDirectional(0, 0.63),
                     child: FFButtonWidget(
-                      onPressed: () async {
-                        final therapistsCreateData = createTherapistsRecordData(
-                          therapistName: '',
-                          therapistPhoto: '',
-                          therapistAge: '',
-                          therapistBio: '',
-                        );
-                        await TherapistsRecord.collection
-                            .doc()
-                            .set(therapistsCreateData);
+                      onPressed: () {
+                        print('Button pressed ...');
                       },
                       text: 'Add therapist',
                       options: FFButtonOptions(
