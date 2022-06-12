@@ -41,11 +41,6 @@ class GetTherapistsCall {
       returnBody: true,
     );
   }
-
-  static dynamic name(dynamic response) => getJsonField(
-        response,
-        r'''$..name''',
-      );
 }
 
 class GetCategoriesCall {
