@@ -20,3 +20,4 @@ export 'guestprofile/guestprofile_widget.dart' show GuestprofileWidget;
 export 'admin_dashboard/admin_dashboard_widget.dart' show AdminDashboardWidget;
 export 'add_therapist/add_therapist_widget.dart' show AddTherapistWidget;
 export 'location/location_widget.dart' show LocationWidget;
+export 'my_favorites/my_favorites_widget.dart' show MyFavoritesWidget;

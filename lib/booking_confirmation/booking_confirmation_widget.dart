@@ -217,7 +217,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
                                   ),
                         ),
                         Text(
-                          'Php 500.00',
+                          'Php 600.00',
                           style:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Lexend Deca',
@@ -246,7 +246,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
                                   ),
                         ),
                         Text(
-                          'Php 150.00',
+                          'Php 250.00',
                           style:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Lexend Deca',
@@ -274,7 +274,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
                               ),
                         ),
                         Text(
-                          'Php 750.00',
+                          'Php 50.00',
                           style: FlutterFlowTheme.of(context).title1.override(
                                 fontFamily: 'Lexend Deca',
                                 color: Color(0xFF090F13),
