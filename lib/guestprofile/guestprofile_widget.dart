@@ -86,18 +86,16 @@ class _GuestprofileWidgetState extends State<GuestprofileWidget> {
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                        child: AuthUserStreamWidget(
-                          child: Container(
-                            width: 90,
-                            height: 90,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: Image.network(
-                              currentUserPhoto,
-                              fit: BoxFit.fitWidth,
-                            ),
+                        child: Container(
+                          width: 90,
+                          height: 90,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Image.network(
+                            currentUserPhoto,
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
                       ),
@@ -319,41 +317,37 @@ class _GuestprofileWidgetState extends State<GuestprofileWidget> {
                   ),
                 ),
               ),
-              if ((valueOrDefault(currentUserDocument?.isAdmin, false)) == true)
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
-                  child: AuthUserStreamWidget(
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        await Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 300),
-                            reverseDuration: Duration(milliseconds: 300),
-                            child: AdminDashboardWidget(),
-                          ),
-                        );
-                      },
-                      text: 'Admin Panel',
-                      options: FFButtonOptions(
-                        width: 130,
-                        height: 40,
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 12,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 300),
+                        reverseDuration: Duration(milliseconds: 300),
+                        child: AdminDashboardWidget(),
                       ),
+                    );
+                  },
+                  text: 'Admin Panel',
+                  options: FFButtonOptions(
+                    width: 130,
+                    height: 40,
+                    color: FlutterFlowTheme.of(context).primaryColor,
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
                     ),
+                    borderRadius: 12,
                   ),
                 ),
+              ),
               Expanded(
                 child: Align(
                   alignment: AlignmentDirectional(0, 0.85),

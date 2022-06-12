@@ -1,5 +1,4 @@
 import '../auth/auth_util.dart';
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -249,59 +248,18 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget> {
                                               Align(
                                                 alignment: AlignmentDirectional(
                                                     -0.92, 0.69),
-                                                child: FutureBuilder<
-                                                    List<TherapistsRecord>>(
-                                                  future:
-                                                      queryTherapistsRecordOnce(
-                                                    queryBuilder:
-                                                        (therapistsRecord) =>
-                                                            therapistsRecord.where(
-                                                                'therapist_name',
-                                                                isEqualTo:
-                                                                    'true'),
-                                                    singleRecord: true,
-                                                  ),
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child:
-                                                            LinearProgressIndicator(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryColor,
-                                                        ),
-                                                      );
-                                                    }
-                                                    List<TherapistsRecord>
-                                                        textTherapistsRecordList =
-                                                        snapshot.data;
-                                                    // Return an empty Container when the document does not exist.
-                                                    if (snapshot.data.isEmpty) {
-                                                      return Container();
-                                                    }
-                                                    final textTherapistsRecord =
-                                                        textTherapistsRecordList
-                                                                .isNotEmpty
-                                                            ? textTherapistsRecordList
-                                                                .first
-                                                            : null;
-                                                    return Text(
-                                                      textTherapistsRecord
-                                                          .therapistName,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .tertiaryColor,
-                                                              ),
-                                                    );
-                                                  },
+                                                child: Text(
+                                                  'Therapist',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiaryColor,
+                                                      ),
                                                 ),
                                               ),
                                               Align(
@@ -362,17 +320,14 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget> {
                                               Align(
                                                 alignment: AlignmentDirectional(
                                                     0.91, -0.42),
-                                                child: AuthUserStreamWidget(
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                    child: Image.network(
-                                                      currentUserPhoto,
-                                                      width: 30,
-                                                      height: 30,
-                                                      fit: BoxFit.cover,
-                                                    ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  child: Image.network(
+                                                    currentUserPhoto,
+                                                    width: 30,
+                                                    height: 30,
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
                                               ),
@@ -689,53 +644,15 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget> {
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10, 0, 0, 0),
-                                            child: StreamBuilder<
-                                                List<TherapistsRecord>>(
-                                              stream: queryTherapistsRecord(
-                                                queryBuilder:
-                                                    (therapistsRecord) =>
-                                                        therapistsRecord.where(
-                                                            'therapist_name',
-                                                            isEqualTo: 'true'),
-                                                singleRecord: true,
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child:
-                                                        LinearProgressIndicator(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryColor,
-                                                    ),
-                                                  );
-                                                }
-                                                List<TherapistsRecord>
-                                                    textTherapistsRecordList =
-                                                    snapshot.data;
-                                                // Return an empty Container when the document does not exist.
-                                                if (snapshot.data.isEmpty) {
-                                                  return Container();
-                                                }
-                                                final textTherapistsRecord =
-                                                    textTherapistsRecordList
-                                                            .isNotEmpty
-                                                        ? textTherapistsRecordList
-                                                            .first
-                                                        : null;
-                                                return Text(
-                                                  'Therapist',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
+                                            child: Text(
+                                              'Therapist',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
                                                         fontFamily: 'Poppins',
                                                         fontSize: 10,
                                                       ),
-                                                );
-                                              },
                                             ),
                                           ),
                                           Padding(
