@@ -3,7 +3,6 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../serviceslist/serviceslist_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -311,30 +310,8 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget> {
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(5, 15, 0, 0),
-                                                  child: AuthUserStreamWidget(
-                                                    child: Text(
-                                                      currentUserDisplayName,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .tertiaryColor,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    -0.92, 0.1),
-                                                child: AuthUserStreamWidget(
                                                   child: Text(
-                                                    currentPhoneNumber,
+                                                    'Client name',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyText1
@@ -345,6 +322,23 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget> {
                                                               .tertiaryColor,
                                                         ),
                                                   ),
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -0.92, 0.1),
+                                                child: Text(
+                                                  'Phone number',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiaryColor,
+                                                      ),
                                                 ),
                                               ),
                                               Align(
@@ -435,100 +429,87 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       40, 15, 0, 0),
-                                  child: InkWell(
-                                    onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              ServiceslistWidget(),
-                                        ),
-                                      );
-                                    },
-                                    child: Material(
-                                      color: Colors.transparent,
-                                      elevation: 4,
-                                      shape: RoundedRectangleBorder(
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 4,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(6),
+                                    ),
+                                    child: Container(
+                                      width: 300,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryColor,
                                         borderRadius: BorderRadius.circular(6),
                                       ),
-                                      child: Container(
-                                        width: 300,
-                                        height: 100,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                        ),
-                                        child: Stack(
-                                          children: [
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -0.91, 0.68),
-                                              child: Text(
-                                                'Total Sales',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
-                                              ),
+                                      child: Stack(
+                                        children: [
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -0.91, 0.68),
+                                            child: Text(
+                                              'Total Sales',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
                                             ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -0.91, -0.02),
-                                              child: Text(
-                                                'Total Bookings',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
-                                              ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -0.91, -0.02),
+                                            child: Text(
+                                              'Total Bookings',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
                                             ),
-                                            Align(
-                                              alignment:
-                                                  AlignmentDirectional(0, -0.8),
-                                              child: Text(
-                                                'Daily Sales',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Open Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .tertiaryColor,
-                                                      fontWeight:
-                                                          FontWeight.w800,
-                                                    ),
-                                              ),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0, -0.8),
+                                            child: Text(
+                                              'Daily Sales',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Open Sans',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .tertiaryColor,
+                                                    fontWeight: FontWeight.w800,
+                                                  ),
                                             ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.97, 0.68),
-                                              child: Text(
-                                                'Php 6,000.00',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .tertiaryColor,
-                                                        ),
-                                              ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                0.97, 0.68),
+                                            child: Text(
+                                              'Php 6,000.00',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiaryColor,
+                                                      ),
                                             ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.93, 0.03),
-                                              child: Text(
-                                                '30',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
-                                              ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                0.93, 0.03),
+                                            child: Text(
+                                              '30',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -544,107 +525,91 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           40, 15, 0, 0),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ServiceslistWidget(),
-                                            ),
-                                          );
-                                        },
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          elevation: 4,
-                                          shape: RoundedRectangleBorder(
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 4,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                        ),
+                                        child: Container(
+                                          width: 300,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryColor,
                                             borderRadius:
                                                 BorderRadius.circular(6),
                                           ),
-                                          child: Container(
-                                            width: 300,
-                                            height: 100,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(6),
-                                            ),
-                                            child: Stack(
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          -0.91, 0.68),
-                                                  child: Text(
-                                                    'Total Sales',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1,
-                                                  ),
+                                          child: Stack(
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -0.91, 0.68),
+                                                child: Text(
+                                                  'Total Sales',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1,
                                                 ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          -0.91, -0.02),
-                                                  child: Text(
-                                                    'Total Bookings',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1,
-                                                  ),
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -0.91, -0.02),
+                                                child: Text(
+                                                  'Total Bookings',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1,
                                                 ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0, -0.8),
-                                                  child: Text(
-                                                    'Monthly Sales',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily:
-                                                              'Open Sans',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .tertiaryColor,
-                                                          fontWeight:
-                                                              FontWeight.w800,
-                                                        ),
-                                                  ),
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0, -0.8),
+                                                child: Text(
+                                                  'Monthly Sales',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiaryColor,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                      ),
                                                 ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.97, 0.68),
-                                                  child: Text(
-                                                    'Php 60,000.00',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .tertiaryColor,
-                                                        ),
-                                                  ),
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.97, 0.68),
+                                                child: Text(
+                                                  'Php 60,000.00',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiaryColor,
+                                                      ),
                                                 ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.93, 0.03),
-                                                  child: Text(
-                                                    '300',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1,
-                                                  ),
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.93, 0.03),
+                                                child: Text(
+                                                  '300',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1,
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -696,9 +661,21 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          AuthUserStreamWidget(
+                                          Text(
+                                            'Guest ',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  fontSize: 10,
+                                                ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 0, 0, 0),
                                             child: Text(
-                                              currentUserDisplayName,
+                                              'Phone Number',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
@@ -706,23 +683,6 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget> {
                                                         fontFamily: 'Poppins',
                                                         fontSize: 10,
                                                       ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 0, 0),
-                                            child: AuthUserStreamWidget(
-                                              child: Text(
-                                                currentPhoneNumber,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 10,
-                                                        ),
-                                              ),
                                             ),
                                           ),
                                           Padding(
@@ -766,8 +726,7 @@ class _AdminDashboardWidgetState extends State<AdminDashboardWidget> {
                                                             .first
                                                         : null;
                                                 return Text(
-                                                  textTherapistsRecord
-                                                      .therapistName,
+                                                  'Therapist',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1

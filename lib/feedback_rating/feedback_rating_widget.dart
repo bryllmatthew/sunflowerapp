@@ -36,7 +36,7 @@ class _FeedbackRatingWidgetState extends State<FeedbackRatingWidget> {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: Image.asset(
-                        'assets/images/BACKGROUND_screen_(1).jpg',
+                        'assets/images/marble-background.jpg',
                       ).image,
                     ),
                     shape: BoxShape.rectangle,
@@ -53,7 +53,7 @@ class _FeedbackRatingWidgetState extends State<FeedbackRatingWidget> {
                             color: FlutterFlowTheme.of(context).secondaryColor,
                           ),
                           direction: Axis.horizontal,
-                          initialRating: ratingBarValue ??= 0,
+                          initialRating: ratingBarValue ??= 3,
                           unratedColor: Color(0xFF9E9E9E),
                           itemCount: 5,
                           itemSize: 40,
