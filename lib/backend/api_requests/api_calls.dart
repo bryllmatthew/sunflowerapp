@@ -36,10 +36,7 @@ class GetTherapistsCall {
       callName: 'Get therapists',
       apiUrl: 'https://sunflower-backend-api.herokuapp.com/v1/therapists',
       callType: ApiCallType.GET,
-      headers: {
-        'Authorization':
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyOWI5MTcwMGEzMTFlNWRhMDdhZmUxOSIsImZpcnN0bmFtZSI6IklzbWFpbCIsImxhc3RuYW1lIjoiQWtpYnUiLCJ1c2VybmFtZSI6Impvb21wcm8iLCJlbWFpbCI6Impvb21wcm9AZ21haWwuY29tIiwicGhvbmUiOiIxMjM0NTY3ODk2MSIsInBhc3N3b3JkIjoiam9vbXBybyIsInJvbGUiOiJBZG1pbiIsImltYWdlIjoiYmIuanBnIn0sImlhdCI6MTY1NDM2NjA4NywiZXhwIjoxNjU1MjMwMDg3fQ.aaGxp-RY6_s5wRtFCjwwfeDZKAmgVfOZJ2oyxin35es',
-      },
+      headers: {},
       params: {},
       returnBody: true,
     );

@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -245,6 +244,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Container(
             width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 1,
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
@@ -568,7 +568,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
                     child: Text(
-                      'Feature Masseuse',
+                      'Featured Therapists',
                       style: FlutterFlowTheme.of(context).subtitle1.override(
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).secondaryText,
@@ -576,7 +576,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 25),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                     child: FutureBuilder<ApiCallResponse>(
                       future: GetTherapistsCall.call(),
                       builder: (context, snapshot) {
@@ -588,26 +588,19 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                             ),
                           );
                         }
-                        final listViewGetTherapistsResponse = snapshot.data;
+                        final columnGetTherapistsResponse = snapshot.data;
                         return Builder(
                           builder: (context) {
-                            final therapist = (getJsonField(
-                                      (listViewGetTherapistsResponse
-                                              ?.jsonBody ??
-                                          ''),
-                                      r'''$.records''',
-                                    )?.toList() ??
-                                    [])
-                                .take(5)
-                                .toList();
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: therapist.length,
-                              itemBuilder: (context, therapistIndex) {
-                                final therapistItem = therapist[therapistIndex];
+                            final thera = getJsonField(
+                                  (columnGetTherapistsResponse?.jsonBody ?? ''),
+                                  r'''$.records''',
+                                )?.toList() ??
+                                [];
+                            return Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children:
+                                  List.generate(thera.length, (theraIndex) {
+                                final theraItem = thera[theraIndex];
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       16, 12, 16, 0),
@@ -641,8 +634,8 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                                   BorderRadius.circular(8),
                                               child: Image.network(
                                                 getJsonField(
-                                                  therapistItem,
-                                                  r'''$..image''',
+                                                  theraItem,
+                                                  r'''$..therapistimage''',
                                                 ),
                                                 width: 100,
                                                 height: 100,
@@ -662,81 +655,142 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Name',
+                                                    getJsonField(
+                                                      theraItem,
+                                                      r'''$..therapistname''',
+                                                    ).toString(),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .subtitle1,
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 4, 0, 0),
-                                                    child: AutoSizeText(
-                                                      getJsonField(
-                                                        therapistItem,
-                                                        r'''$..age''',
-                                                      )
-                                                          .toString()
-                                                          .maybeHandleOverflow(
-                                                            maxChars: 70,
-                                                            replacement: '…',
-                                                          ),
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 0, 5, 0),
+                                                        child: Icon(
+                                                          Icons.person,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryColor,
+                                                          size: 20,
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 4, 0, 0),
+                                                        child: AutoSizeText(
+                                                          getJsonField(
+                                                            theraItem,
+                                                            r'''$..age''',
+                                                          )
+                                                              .toString()
+                                                              .maybeHandleOverflow(
+                                                                maxChars: 70,
+                                                                replacement:
+                                                                    '…',
+                                                              ),
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyText2
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
                                                                 fontSize: 12,
                                                               ),
-                                                    ),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 4, 8, 0),
-                                                    child: Text(
-                                                      getJsonField(
-                                                        therapistItem,
-                                                        r'''$..location.name''',
-                                                      ).toString(),
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 0, 5, 0),
+                                                        child: Icon(
+                                                          Icons.location_on,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryColor,
+                                                          size: 20,
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 4, 8, 0),
+                                                        child: Text(
+                                                          getJsonField(
+                                                            theraItem,
+                                                            r'''$..location.name''',
+                                                          ).toString(),
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyText2
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
                                                                 fontSize: 12,
                                                               ),
-                                                    ),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                  RatingBarIndicator(
-                                                    itemBuilder:
-                                                        (context, index) =>
-                                                            Icon(
-                                                      Icons.star_rounded,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryColor,
-                                                    ),
-                                                    direction: Axis.horizontal,
-                                                    rating: getJsonField(
-                                                      therapistItem,
-                                                      r'''$..rating''',
-                                                    ),
-                                                    unratedColor:
-                                                        Color(0xFF9E9E9E),
-                                                    itemCount: 5,
-                                                    itemSize: 15,
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 0, 5, 0),
+                                                        child: Icon(
+                                                          Icons.star_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryColor,
+                                                          size: 20,
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 4, 8, 0),
+                                                        child: Text(
+                                                          getJsonField(
+                                                            theraItem,
+                                                            r'''$..rating''',
+                                                          ).toString(),
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText2
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                fontSize: 12,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
@@ -753,7 +807,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 4, 0, 0),
                                                 child: Icon(
-                                                  Icons.favorite,
+                                                  Icons.favorite_border_rounded,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
@@ -767,7 +821,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                                 text: 'Book',
                                                 options: FFButtonOptions(
                                                   width: 80,
-                                                  height: 20,
+                                                  height: 25,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryColor,
@@ -792,7 +846,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                     ),
                                   ),
                                 );
-                              },
+                              }),
                             );
                           },
                         );
