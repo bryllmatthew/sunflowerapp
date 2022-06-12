@@ -15,6 +15,9 @@ abstract class FlutterFlowTheme {
   Color primaryText;
   Color secondaryText;
 
+  Color primaryBtnText;
+  Color lineColor;
+
   TextStyle get title1 => GoogleFonts.getFont(
         'Poppins',
         color: Color(0xFF303030),
@@ -63,11 +66,14 @@ class LightModeTheme extends FlutterFlowTheme {
   Color primaryColor = const Color(0xFFFBCA25);
   Color secondaryColor = const Color(0xFFF38825);
   Color tertiaryColor = const Color(0xFFFFFFFF);
-  Color alternate = const Color(0x00000000);
-  Color primaryBackground = const Color(0x00000000);
-  Color secondaryBackground = const Color(0x00000000);
-  Color primaryText = const Color(0x00000000);
-  Color secondaryText = const Color(0x00000000);
+  Color alternate = const Color(0xFFDBE2E7);
+  Color primaryBackground = const Color(0xFFF1F4F8);
+  Color secondaryBackground = const Color(0xFFFFFFFF);
+  Color primaryText = const Color(0xFF14181B);
+  Color secondaryText = const Color(0xFF57636C);
+
+  Color primaryBtnText = Color(0xFFFFFFFF);
+  Color lineColor = Color(0xFFE0E3E7);
 }
 
 extension TextStyleHelper on TextStyle {

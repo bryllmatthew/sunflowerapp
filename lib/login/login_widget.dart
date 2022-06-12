@@ -2,7 +2,7 @@ import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../home/home_widget.dart';
+import '../homepage/homepage_widget.dart';
 import '../sign_up/sign_up_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -87,8 +87,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0),
                       bottomRight: Radius.circular(0),
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16),
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
                     ),
                   ),
                   child: Container(
@@ -99,14 +99,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: Image.asset(
-                          'assets/images/background.jpg',
+                          'assets/images/marble-background.jpg',
                         ).image,
                       ),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0),
                         bottomRight: Radius.circular(0),
-                        topLeft: Radius.circular(16),
-                        topRight: Radius.circular(16),
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
                       ),
                     ),
                     child: Column(
@@ -144,14 +144,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     await Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => HomeWidget(),
+                                        builder: (context) => HomepageWidget(),
                                       ),
                                     );
                                   },
                                   text: 'Continue as Guest',
                                   options: FFButtonOptions(
                                     width: 130,
-                                    height: 40,
+                                    height: 30,
                                     color: Color(0xFF1D8814),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
@@ -165,7 +165,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       color: Colors.transparent,
                                       width: 1,
                                     ),
-                                    borderRadius: 12,
+                                    borderRadius: 10,
                                   ),
                                 ),
                               ),
@@ -280,12 +280,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 password: passwordController.text,
                               );
                               if ((loginnsuccess?.succeeded ?? true)) {
-                                await Navigator.pushAndRemoveUntil(
+                                await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HomeWidget(),
+                                    builder: (context) => HomepageWidget(),
                                   ),
-                                  (r) => false,
                                 );
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -318,7 +317,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 5,
+                              borderRadius: 10,
                             ),
                           ),
                         ),
@@ -352,7 +351,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   color: Colors.transparent,
                                   width: 1,
                                 ),
-                                borderRadius: 5,
+                                borderRadius: 10,
                               ),
                             ),
                           ),

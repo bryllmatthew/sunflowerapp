@@ -19,7 +19,6 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
   bool switchListTileValue1;
   double ratingBarValue;
   bool switchListTileValue2;
-  bool switchListTileValue3;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -43,7 +42,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
                       children: [
                         Card(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Color(0x3A000000),
+                          color: FlutterFlowTheme.of(context).primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -51,9 +50,11 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
                             borderColor: Colors.transparent,
                             borderRadius: 30,
                             buttonSize: 46,
+                            fillColor:
+                                FlutterFlowTheme.of(context).primaryColor,
                             icon: Icon(
                               Icons.arrow_back_rounded,
-                              color: Colors.white,
+                              color: FlutterFlowTheme.of(context).tertiaryColor,
                               size: 24,
                             ),
                             onPressed: () {
@@ -199,29 +200,6 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
                     dense: false,
                     controlAffinity: ListTileControlAffinity.trailing,
                   ),
-                  SwitchListTile(
-                    value: switchListTileValue3 ??= false,
-                    onChanged: (newValue) =>
-                        setState(() => switchListTileValue3 = newValue),
-                    title: Text(
-                      'Ear Candle',
-                      style: FlutterFlowTheme.of(context).title3.override(
-                            fontFamily: 'Poppins',
-                            fontSize: 16,
-                          ),
-                    ),
-                    subtitle: Text(
-                      'Php 150.00',
-                      style: FlutterFlowTheme.of(context).subtitle2.override(
-                            fontFamily: 'Poppins',
-                            fontSize: 12,
-                          ),
-                    ),
-                    tileColor: Color(0xFFF5F5F5),
-                    activeColor: FlutterFlowTheme.of(context).secondaryColor,
-                    dense: false,
-                    controlAffinity: ListTileControlAffinity.trailing,
-                  ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 0),
                     child: Row(
@@ -239,7 +217,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
                                   ),
                         ),
                         Text(
-                          'Php 500.00',
+                          'Php 600.00',
                           style:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Lexend Deca',
@@ -268,36 +246,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
                                   ),
                         ),
                         Text(
-                          'Php 150.00',
-                          style:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF151B1E),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Home Service Fee',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF8B97A2),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                        ),
-                        Text(
-                          'Php 100.00',
+                          'Php 250.00',
                           style:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Lexend Deca',
@@ -325,7 +274,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget> {
                               ),
                         ),
                         Text(
-                          'Php 750.00',
+                          'Php 50.00',
                           style: FlutterFlowTheme.of(context).title1.override(
                                 fontFamily: 'Lexend Deca',
                                 color: Color(0xFF090F13),

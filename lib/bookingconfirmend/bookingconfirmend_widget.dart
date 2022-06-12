@@ -2,7 +2,7 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../home/home_widget.dart';
+import '../homepage/homepage_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -76,7 +76,7 @@ class _BookingconfirmendWidgetState extends State<BookingconfirmendWidget>
             image: DecorationImage(
               fit: BoxFit.cover,
               image: Image.asset(
-                'assets/images/BACKGROUND_screen_(1).jpg',
+                'assets/images/marble-background.jpg',
               ).image,
             ),
           ),
@@ -108,7 +108,7 @@ class _BookingconfirmendWidgetState extends State<BookingconfirmendWidget>
                   'Booking Confirmed!',
                   style: FlutterFlowTheme.of(context).title1.override(
                         fontFamily: 'Lexend Deca',
-                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor,
                         fontSize: 24,
                         fontWeight: FontWeight.w900,
                       ),
@@ -121,7 +121,7 @@ class _BookingconfirmendWidgetState extends State<BookingconfirmendWidget>
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyText2.override(
                         fontFamily: 'Lexend Deca',
-                        color: Color(0xFFF5F2E0),
+                        color: FlutterFlowTheme.of(context).primaryText,
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
@@ -144,11 +144,11 @@ class _BookingconfirmendWidgetState extends State<BookingconfirmendWidget>
                               type: PageTransitionType.fade,
                               duration: Duration(milliseconds: 300),
                               reverseDuration: Duration(milliseconds: 300),
-                              child: HomeWidget(),
+                              child: HomepageWidget(),
                             ),
                           );
                         },
-                        text: 'Go Home',
+                        text: 'Go Back Home',
                         options: FFButtonOptions(
                           width: 230,
                           height: 50,

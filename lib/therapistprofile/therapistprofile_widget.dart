@@ -2,6 +2,7 @@ import '../backend/backend.dart';
 import '../components/bookingconfirmation_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +86,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.94,
-                        height: 400,
+                        height: 350,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -98,11 +99,10 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(10),
                           child: Image.asset(
                             'assets/images/pexels-joe-alexander-2702692.jpg',
                             width: MediaQuery.of(context).size.width * 0.96,
-                            height: 40,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -142,41 +142,31 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
-                        child: StreamBuilder<List<TherapistsRecord>>(
-                          stream: queryTherapistsRecord(
-                            singleRecord: true,
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: LinearProgressIndicator(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                ),
-                              );
-                            }
-                            List<TherapistsRecord> textTherapistsRecordList =
-                                snapshot.data;
-                            // Return an empty Container when the document does not exist.
-                            if (snapshot.data.isEmpty) {
-                              return Container();
-                            }
-                            final textTherapistsRecord =
-                                textTherapistsRecordList.isNotEmpty
-                                    ? textTherapistsRecordList.first
-                                    : null;
-                            return Text(
-                              textTherapistsRecord.therapistName,
-                              style:
-                                  FlutterFlowTheme.of(context).title3.override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Color(0xFF0F0E0E),
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                            );
-                          },
+                        child: Text(
+                          'Therapist name',
+                          style: FlutterFlowTheme.of(context).title3.override(
+                                fontFamily: 'Lexend Deca',
+                                color: Color(0xFF0F0E0E),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                      ),
+                      ToggleIcon(
+                        onPressed: () async {
+                          setState(() =>
+                              FFAppState().favourite = !FFAppState().favourite);
+                        },
+                        value: FFAppState().favourite,
+                        onIcon: Icon(
+                          Icons.favorite,
+                          color: Colors.black,
+                          size: 25,
+                        ),
+                        offIcon: Icon(
+                          Icons.favorite_border,
+                          color: Colors.black,
+                          size: 25,
                         ),
                       ),
                     ],
@@ -198,10 +188,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                       List<TherapistsRecord> textTherapistsRecordList =
                           snapshot.data;
                       return Text(
-                        columnTherapistsRecord.therapistLoc
-                            .toList()
-                            .length
-                            .toString(),
+                        'Location',
                         textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context).bodyText1,
                       );
@@ -215,7 +202,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        columnTherapistsRecord.therapistAge,
+                        'Age',
                         style: FlutterFlowTheme.of(context).bodyText2.override(
                               fontFamily: 'Lexend Deca',
                               color: Color(0xFF8B97A2),
@@ -224,7 +211,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                             ),
                       ),
                       Text(
-                        columnTherapistsRecord.hourlyRate,
+                        '600-700/Hour',
                         textAlign: TextAlign.end,
                         style: FlutterFlowTheme.of(context).title3.override(
                               fontFamily: 'Lexend Deca',
@@ -246,12 +233,14 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                       Expanded(
                         child: Text(
                           columnTherapistsRecord.therapistBio,
+                          textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
                                     color: Color(0xFF0F0E0E),
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
+                                    lineHeight: 10,
                                   ),
                         ),
                       ),

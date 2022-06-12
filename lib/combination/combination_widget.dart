@@ -4,14 +4,14 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SwedishPageWidget extends StatefulWidget {
-  const SwedishPageWidget({Key key}) : super(key: key);
+class CombinationWidget extends StatefulWidget {
+  const CombinationWidget({Key key}) : super(key: key);
 
   @override
-  _SwedishPageWidgetState createState() => _SwedishPageWidgetState();
+  _CombinationWidgetState createState() => _CombinationWidgetState();
 }
 
-class _SwedishPageWidgetState extends State<SwedishPageWidget> {
+class _CombinationWidgetState extends State<CombinationWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -81,7 +81,7 @@ class _SwedishPageWidgetState extends State<SwedishPageWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(-0.04, -0.25),
                                   child: Text(
-                                    'Swedish Massage',
+                                    'Combination',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
@@ -119,7 +119,7 @@ class _SwedishPageWidgetState extends State<SwedishPageWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(-0.02, -0.71),
                                   child: Image.asset(
-                                    'assets/images/massage.png',
+                                    'assets/images/icons8-massage-64_(1).png',
                                     width: 100,
                                     height: 100,
                                     fit: BoxFit.cover,
@@ -175,14 +175,14 @@ class _SwedishPageWidgetState extends State<SwedishPageWidget> {
                             Align(
                               alignment: AlignmentDirectional(0.01, 0.42),
                               child: Text(
-                                'Shiatsu',
+                                'Swedish',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                             ),
                             Align(
                               alignment: AlignmentDirectional(0.04, -0.68),
                               child: Image.asset(
-                                'assets/images/icons8-massage-64.png',
+                                'assets/images/massage.png',
                                 width: 80,
                                 height: 80,
                                 fit: BoxFit.cover,
@@ -222,7 +222,7 @@ class _SwedishPageWidgetState extends State<SwedishPageWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(0, -0.82),
                                   child: Image.asset(
-                                    'assets/images/icons8-massage-64_(1).png',
+                                    'assets/images/icons8-massage-64.png',
                                     width: 80,
                                     height: 80,
                                     fit: BoxFit.cover,
@@ -231,7 +231,7 @@ class _SwedishPageWidgetState extends State<SwedishPageWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(0.01, 0.42),
                                   child: Text(
-                                    'Combination',
+                                    'Shiatsu',
                                     style:
                                         FlutterFlowTheme.of(context).bodyText1,
                                   ),
