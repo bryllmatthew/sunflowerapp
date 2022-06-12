@@ -21,6 +21,7 @@ class TherapistprofileWidget extends StatefulWidget {
 }
 
 class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
+  double ratingBarValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -36,11 +37,11 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
           buttonSize: 48,
           icon: Icon(
             Icons.chevron_left_rounded,
-            color: Color(0xFF95A1AC),
+            color: Colors.white,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            Navigator.pop(context);
           },
         ),
         title: Text(
@@ -96,16 +97,19 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                 ),
               ],
             ),
-            RatingBarIndicator(
+            RatingBar.builder(
+              onRatingUpdate: (newValue) =>
+                  setState(() => ratingBarValue = newValue),
               itemBuilder: (context, index) => Icon(
                 Icons.star_rounded,
                 color: FlutterFlowTheme.of(context).secondaryColor,
               ),
               direction: Axis.horizontal,
-              rating: 3,
+              initialRating: ratingBarValue ??= 5,
               unratedColor: Color(0xFF9E9E9E),
               itemCount: 5,
               itemSize: 40,
+              glowColor: FlutterFlowTheme.of(context).secondaryColor,
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
@@ -149,7 +153,10 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
             Align(
               alignment: AlignmentDirectional(-0.9, 0),
               child: Text(
-                'Location',
+                getJsonField(
+                  widget.id,
+                  r'''$.location.name''',
+                ).toString(),
                 textAlign: TextAlign.start,
                 style: FlutterFlowTheme.of(context).bodyText1,
               ),
@@ -170,7 +177,10 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                         ),
                   ),
                   Text(
-                    '600-700/Hour',
+                    '${getJsonField(
+                      widget.id,
+                      r'''$.hourlyrate''',
+                    ).toString()}/Hour',
                     textAlign: TextAlign.end,
                     style: FlutterFlowTheme.of(context).title3.override(
                           fontFamily: 'Lexend Deca',
@@ -190,14 +200,17 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                 children: [
                   Expanded(
                     child: Text(
-                      'Hi my name is Jane, and I\'ve been a massage therapist for 5 years now. I can do any type massage, and willing to go extral mile :D',
-                      textAlign: TextAlign.center,
+                      getJsonField(
+                        widget.id,
+                        r'''$.bio''',
+                      ).toString(),
+                      textAlign: TextAlign.start,
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Lexend Deca',
                             color: Color(0xFF0F0E0E),
                             fontSize: 14,
                             fontWeight: FontWeight.normal,
-                            lineHeight: 10,
+                            lineHeight: 1.5,
                           ),
                     ),
                   ),

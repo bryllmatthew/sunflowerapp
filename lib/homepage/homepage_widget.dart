@@ -840,7 +840,9 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          TherapistprofileWidget(),
+                                                          TherapistprofileWidget(
+                                                        id: theraItem,
+                                                      ),
                                                     ),
                                                   );
                                                 },
