@@ -9,7 +9,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TherapistprofileWidget extends StatefulWidget {
-  const TherapistprofileWidget({Key key}) : super(key: key);
+  const TherapistprofileWidget({
+    Key key,
+    this.id,
+  }) : super(key: key);
+
+  final dynamic id;
 
   @override
   _TherapistprofileWidgetState createState() => _TherapistprofileWidgetState();
@@ -78,8 +83,11 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        'assets/images/pexels-joe-alexander-2702692.jpg',
+                      child: Image.network(
+                        getJsonField(
+                          widget.id,
+                          r'''$.therapistimage''',
+                        ),
                         width: MediaQuery.of(context).size.width * 0.96,
                         fit: BoxFit.cover,
                       ),
@@ -106,7 +114,10 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                 children: [
                   Expanded(
                     child: Text(
-                      'Therapist name',
+                      getJsonField(
+                        widget.id,
+                        r'''$.therapistname''',
+                      ).toString(),
                       style: FlutterFlowTheme.of(context).title3.override(
                             fontFamily: 'Lexend Deca',
                             color: Color(0xFF0F0E0E),

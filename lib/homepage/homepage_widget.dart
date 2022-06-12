@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../guestprofile/guestprofile_widget.dart';
+import '../therapistprofile/therapistprofile_widget.dart';
 import '../therapists/therapists_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -834,8 +835,14 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                                 ),
                                               ),
                                               FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
+                                                onPressed: () async {
+                                                  await Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          TherapistprofileWidget(),
+                                                    ),
+                                                  );
                                                 },
                                                 text: 'Book',
                                                 options: FFButtonOptions(
