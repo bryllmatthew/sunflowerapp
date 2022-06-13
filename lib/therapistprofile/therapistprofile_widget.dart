@@ -168,7 +168,10 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Age',
+                    getJsonField(
+                      widget.id,
+                      r'''$.age''',
+                    ).toString(),
                     style: FlutterFlowTheme.of(context).bodyText2.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xFF8B97A2),
