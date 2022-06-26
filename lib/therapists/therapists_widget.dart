@@ -1,6 +1,7 @@
 import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
@@ -120,7 +121,7 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                       final listViewGetTherapistsResponse = snapshot.data;
                       return Builder(
                         builder: (context) {
-                          final thera = getJsonField(
+                          final therapists = getJsonField(
                                 (listViewGetTherapistsResponse?.jsonBody ?? ''),
                                 r'''$.records''',
                               )?.toList() ??
@@ -129,9 +130,10 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
-                            itemCount: thera.length,
-                            itemBuilder: (context, theraIndex) {
-                              final theraItem = thera[theraIndex];
+                            itemCount: therapists.length,
+                            itemBuilder: (context, therapistsIndex) {
+                              final therapistsItem =
+                                  therapists[therapistsIndex];
                               return Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 8, 0, 8),
@@ -165,7 +167,7 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                                                 BorderRadius.circular(8),
                                             child: Image.network(
                                               getJsonField(
-                                                theraItem,
+                                                therapistsItem,
                                                 r'''$..therapistimage''',
                                               ),
                                               width: 100,
@@ -188,7 +190,7 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                                               children: [
                                                 Text(
                                                   getJsonField(
-                                                    theraItem,
+                                                    therapistsItem,
                                                     r'''$..therapistname''',
                                                   ).toString(),
                                                   style: FlutterFlowTheme.of(
@@ -220,7 +222,7 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                                                                   0, 4, 0, 0),
                                                       child: AutoSizeText(
                                                         getJsonField(
-                                                          theraItem,
+                                                          therapistsItem,
                                                           r'''$..age''',
                                                         )
                                                             .toString()
@@ -268,7 +270,7 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                                                                   0, 4, 8, 0),
                                                       child: Text(
                                                         getJsonField(
-                                                          theraItem,
+                                                          therapistsItem,
                                                           r'''$..location.name''',
                                                         ).toString(),
                                                         textAlign:
@@ -311,7 +313,7 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                                                                   0, 4, 8, 0),
                                                       child: Text(
                                                         getJsonField(
-                                                          theraItem,
+                                                          therapistsItem,
                                                           r'''$..rating''',
                                                         ).toString(),
                                                         textAlign:
@@ -340,14 +342,21 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.end,
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 4, 0, 0),
-                                              child: Icon(
-                                                Icons.favorite_border_rounded,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
+                                            ToggleIcon(
+                                              onPressed: () async {
+                                                setState(() => FFAppState()
+                                                        .favourite =
+                                                    !FFAppState().favourite);
+                                              },
+                                              value: FFAppState().favourite,
+                                              onIcon: Icon(
+                                                Icons.favorite_sharp,
+                                                color: Color(0xFFFF0000),
+                                                size: 25,
+                                              ),
+                                              offIcon: Icon(
+                                                Icons.favorite_border,
+                                                color: Colors.black,
                                                 size: 24,
                                               ),
                                             ),
@@ -358,7 +367,7 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                                                   MaterialPageRoute(
                                                     builder: (context) =>
                                                         TherapistprofileWidget(
-                                                      id: theraItem,
+                                                      id: therapistsItem,
                                                     ),
                                                   ),
                                                 );
@@ -377,11 +386,7 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                                                           fontFamily: 'Poppins',
                                                           color: Colors.white,
                                                         ),
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1,
-                                                ),
-                                                borderRadius: 12,
+                                                borderRadius: 5,
                                               ),
                                             ),
                                           ],

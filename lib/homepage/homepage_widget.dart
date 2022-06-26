@@ -873,11 +873,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                                         fontFamily: 'Poppins',
                                                         color: Colors.white,
                                                       ),
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1,
-                                                  ),
-                                                  borderRadius: 12,
+                                                  borderRadius: 5,
                                                 ),
                                               ),
                                             ],
