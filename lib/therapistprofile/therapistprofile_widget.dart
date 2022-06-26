@@ -164,7 +164,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                       RatingBarIndicator(
                         itemBuilder: (context, index) => Icon(
                           Icons.star_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).primaryColor,
                         ),
                         direction: Axis.horizontal,
                         rating: getJsonField(
@@ -227,8 +227,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                         textAlign: TextAlign.end,
                         style: FlutterFlowTheme.of(context).title3.override(
                               fontFamily: 'Lexend Deca',
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              color: FlutterFlowTheme.of(context).primaryColor,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
@@ -292,7 +291,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                       options: FFButtonOptions(
                         width: 170,
                         height: 50,
-                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle:
                             FlutterFlowTheme.of(context).subtitle2.override(
                                   fontFamily: 'Lexend Deca',

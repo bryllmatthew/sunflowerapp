@@ -2,6 +2,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
+import '../sign_up/sign_up_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -299,8 +300,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         fontFamily: 'Lexend Deca',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w300,
                                       ),
                                   elevation: 0,
                                   borderSide: BorderSide(
@@ -354,8 +355,13 @@ class _SignInWidgetState extends State<SignInWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                           child: FFButtonWidget(
-                            onPressed: () {
-                              print('ButtonCreateAccount pressed ...');
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignUpWidget(),
+                                ),
+                              );
                             },
                             text: 'Create Account',
                             options: FFButtonOptions(
