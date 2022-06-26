@@ -8,6 +8,7 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'index.dart';
 
@@ -107,6 +108,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Homepage': HomepageWidget(),
+      'therapists': TherapistsWidget(),
+      'Cetegories': CetegoriesWidget(),
       'guestprofile': GuestprofileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
@@ -131,8 +134,24 @@ class _NavBarPageState extends State<NavBarPage> {
             tooltip: '',
           ),
           BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.userFriends,
+              size: 24,
+            ),
+            label: 'Therapists',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.bars,
+              size: 24,
+            ),
+            label: 'Categories',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(
-              Icons.person,
+              Icons.settings,
               size: 24,
             ),
             label: 'Account',
