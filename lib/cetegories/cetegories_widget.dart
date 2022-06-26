@@ -120,9 +120,6 @@ class _CetegoriesWidgetState extends State<CetegoriesWidget> {
                                             color: Colors.white,
                                             fontSize: 12,
                                           ),
-                                      borderSide: BorderSide(
-                                        width: 0,
-                                      ),
                                       borderRadius: 5,
                                     ),
                                   ),
@@ -199,9 +196,6 @@ class _CetegoriesWidgetState extends State<CetegoriesWidget> {
                                             color: Colors.white,
                                             fontSize: 12,
                                           ),
-                                      borderSide: BorderSide(
-                                        width: 0,
-                                      ),
                                       borderRadius: 5,
                                     ),
                                   ),
@@ -278,9 +272,6 @@ class _CetegoriesWidgetState extends State<CetegoriesWidget> {
                                             color: Colors.white,
                                             fontSize: 12,
                                           ),
-                                      borderSide: BorderSide(
-                                        width: 0,
-                                      ),
                                       borderRadius: 5,
                                     ),
                                   ),

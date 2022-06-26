@@ -42,7 +42,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 350,
+                      height: 400,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
@@ -66,7 +66,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                             widget.id,
                             r'''$.therapistimage''',
                           ),
-                          width: MediaQuery.of(context).size.width * 0.96,
+                          width: MediaQuery.of(context).size.width,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -76,11 +76,16 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                 Align(
                   alignment: AlignmentDirectional(-1, 0),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(15, 43, 0, 0),
-                    child: FaIcon(
-                      FontAwesomeIcons.arrowCircleLeft,
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                      size: 28,
+                    padding: EdgeInsetsDirectional.fromSTEB(15, 50, 0, 0),
+                    child: InkWell(
+                      onTap: () async {
+                        Navigator.pop(context);
+                      },
+                      child: FaIcon(
+                        FontAwesomeIcons.arrowCircleLeft,
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                        size: 28,
+                      ),
                     ),
                   ),
                 ),
@@ -97,12 +102,12 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                       onIcon: Icon(
                         Icons.favorite,
                         color: Color(0xFFFF0000),
-                        size: 25,
+                        size: 30,
                       ),
                       offIcon: Icon(
                         Icons.favorite_border,
                         color: Color(0xFFFF0000),
-                        size: 25,
+                        size: 30,
                       ),
                     ),
                   ),
