@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TherapistprofileWidget extends StatefulWidget {
@@ -27,7 +28,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFEFEEEE),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -75,10 +76,10 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                 Align(
                   alignment: AlignmentDirectional(-1, 0),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(15, 31, 0, 0),
-                    child: Icon(
-                      Icons.arrow_back_rounded,
-                      color: FlutterFlowTheme.of(context).black600,
+                    padding: EdgeInsetsDirectional.fromSTEB(15, 43, 0, 0),
+                    child: FaIcon(
+                      FontAwesomeIcons.arrowCircleLeft,
+                      color: FlutterFlowTheme.of(context).primaryColor,
                       size: 28,
                     ),
                   ),
@@ -86,7 +87,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                 Align(
                   alignment: AlignmentDirectional(1, 0),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 25, 15, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 38, 15, 0),
                     child: ToggleIcon(
                       onPressed: () async {
                         setState(() =>
@@ -95,12 +96,12 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                       value: FFAppState().favourite,
                       onIcon: Icon(
                         Icons.favorite,
-                        color: Colors.black,
+                        color: Color(0xFFFF0000),
                         size: 25,
                       ),
                       offIcon: Icon(
                         Icons.favorite_border,
-                        color: Colors.black,
+                        color: Color(0xFFFF0000),
                         size: 25,
                       ),
                     ),
@@ -109,7 +110,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
               ],
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 15, 16, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(16, 25, 16, 25),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -144,7 +145,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
                         'Reviews',
@@ -175,7 +176,7 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 10, 16, 10),
+              padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 25),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -193,17 +194,17 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                             ),
                       ),
                       Text(
-                        getJsonField(
+                        '${getJsonField(
                           widget.id,
                           r'''$.age''',
-                        ).toString(),
+                        ).toString()} Years',
                         style: FlutterFlowTheme.of(context).bodyText1,
                       ),
                     ],
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
                         'Rate',
@@ -232,41 +233,34 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                 ],
               ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 100,
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 10, 16, 0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'About',
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                      child: Text(
-                        valueOrDefault<String>(
-                          getJsonField(
-                            widget.id,
-                            r'''$.bio''',
-                          ).toString(),
-                          'about',
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 20),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    'About',
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                    child: Text(
+                      valueOrDefault<String>(
+                        getJsonField(
+                          widget.id,
+                          r'''$.bio''',
+                        ).toString(),
+                        'about',
                       ),
+                      style: FlutterFlowTheme.of(context).bodyText1,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Padding(
