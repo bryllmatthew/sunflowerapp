@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import '../therapistprofile/therapistprofile_widget.dart';
-import '../therapists/therapists_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -145,7 +144,8 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => TherapistsWidget(),
+                        builder: (context) =>
+                            NavBarPage(initialPage: 'therapists'),
                       ),
                     );
                   },
