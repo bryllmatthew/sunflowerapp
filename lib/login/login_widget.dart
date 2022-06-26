@@ -2,9 +2,10 @@ import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../homepage/homepage_widget.dart';
+import '../main.dart';
 import '../sign_up/sign_up_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -144,13 +145,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     await Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => HomepageWidget(),
+                                        builder: (context) =>
+                                            NavBarPage(initialPage: 'Homepage'),
                                       ),
                                     );
                                   },
                                   text: 'Continue as Guest',
                                   options: FFButtonOptions(
-                                    width: 130,
+                                    width: 150,
                                     height: 30,
                                     color: Color(0xFF1D8814),
                                     textStyle: FlutterFlowTheme.of(context)
@@ -159,7 +161,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .tertiaryColor,
-                                          fontSize: 12,
+                                          fontSize: 11,
                                         ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
@@ -217,7 +219,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                             obscureText: !passwordVisibility,
                             decoration: InputDecoration(
                               labelText: 'Password',
-                              hintText: 'Password',
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context)
@@ -283,7 +284,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HomepageWidget(),
+                                    builder: (context) =>
+                                        NavBarPage(initialPage: 'Homepage'),
                                   ),
                                 );
                               } else {
@@ -311,6 +313,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
                               borderSide: BorderSide(
@@ -346,6 +349,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     .override(
                                       fontFamily: 'Poppins',
                                       color: Colors.white,
+                                      fontSize: 14,
                                     ),
                                 borderSide: BorderSide(
                                   color: Colors.transparent,

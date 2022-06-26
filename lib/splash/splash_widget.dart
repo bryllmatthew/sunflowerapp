@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../sign_in/sign_in_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SplashWidget extends StatefulWidget {
@@ -20,6 +21,7 @@ class _SplashWidgetState extends State<SplashWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 1000,
       delay: 1000,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         opacity: 0,
@@ -32,6 +34,7 @@ class _SplashWidgetState extends State<SplashWidget>
       curve: Curves.easeOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         opacity: 0,

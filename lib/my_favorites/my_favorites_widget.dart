@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyFavoritesWidget extends StatefulWidget {
@@ -42,7 +43,7 @@ class _MyFavoritesWidgetState extends State<MyFavoritesWidget> {
         centerTitle: true,
         elevation: 2,
       ),
-      backgroundColor: Color(0x1557636C),
+      backgroundColor: Color(0xFFEDECEC),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

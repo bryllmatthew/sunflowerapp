@@ -2,6 +2,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FeedbackRatingWidget extends StatefulWidget {
@@ -19,7 +20,7 @@ class _FeedbackRatingWidgetState extends State<FeedbackRatingWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -32,13 +33,7 @@ class _FeedbackRatingWidgetState extends State<FeedbackRatingWidget> {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 1,
                   decoration: BoxDecoration(
-                    color: Color(0xFFEEEEEE),
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: Image.asset(
-                        'assets/images/marble-background.jpg',
-                      ).image,
-                    ),
+                    color: FlutterFlowTheme.of(context).primaryBtnText,
                     shape: BoxShape.rectangle,
                   ),
                   child: Stack(

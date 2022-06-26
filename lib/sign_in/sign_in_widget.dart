@@ -1,8 +1,9 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../homepage/homepage_widget.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignInWidget extends StatefulWidget {
@@ -102,13 +103,14 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   await Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => HomepageWidget(),
+                                      builder: (context) =>
+                                          NavBarPage(initialPage: 'Homepage'),
                                     ),
                                   );
                                 },
-                                text: 'Continue as Guest',
+                                text: 'Guest login',
                                 options: FFButtonOptions(
-                                  width: 100,
+                                  width: 120,
                                   height: 40,
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
@@ -118,13 +120,13 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         fontFamily: 'Poppins',
                                         color: Colors.white,
                                         fontSize: 12,
-                                        fontWeight: FontWeight.w300,
+                                        fontWeight: FontWeight.normal,
                                       ),
                                   borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 5,
+                                  borderRadius: 10,
                                 ),
                               ),
                             ],
@@ -313,7 +315,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   await Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => HomepageWidget(),
+                                      builder: (context) =>
+                                          NavBarPage(initialPage: 'Homepage'),
                                     ),
                                   );
                                 },
@@ -335,7 +338,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 12,
+                                  borderRadius: 10,
                                 ),
                               ),
                             ],

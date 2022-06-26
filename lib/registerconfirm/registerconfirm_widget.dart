@@ -2,8 +2,9 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../homepage/homepage_widget.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterconfirmWidget extends StatefulWidget {
@@ -20,6 +21,7 @@ class _RegisterconfirmWidgetState extends State<RegisterconfirmWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),
@@ -36,6 +38,7 @@ class _RegisterconfirmWidgetState extends State<RegisterconfirmWidget>
       curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),
@@ -147,7 +150,7 @@ class _RegisterconfirmWidgetState extends State<RegisterconfirmWidget>
                                 type: PageTransitionType.fade,
                                 duration: Duration(milliseconds: 300),
                                 reverseDuration: Duration(milliseconds: 300),
-                                child: HomepageWidget(),
+                                child: NavBarPage(initialPage: 'Homepage'),
                               ),
                             );
                           },
