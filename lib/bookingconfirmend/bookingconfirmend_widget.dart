@@ -2,8 +2,9 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../homepage/homepage_widget.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookingconfirmendWidget extends StatefulWidget {
@@ -21,6 +22,7 @@ class _BookingconfirmendWidgetState extends State<BookingconfirmendWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),
@@ -37,6 +39,7 @@ class _BookingconfirmendWidgetState extends State<BookingconfirmendWidget>
       curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),
@@ -66,19 +69,13 @@ class _BookingconfirmendWidgetState extends State<BookingconfirmendWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 1,
           decoration: BoxDecoration(
-            color: Color(0xFFEEEEEE),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: Image.asset(
-                'assets/images/marble-background.jpg',
-              ).image,
-            ),
+            color: FlutterFlowTheme.of(context).primaryBtnText,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -144,7 +141,7 @@ class _BookingconfirmendWidgetState extends State<BookingconfirmendWidget>
                               type: PageTransitionType.fade,
                               duration: Duration(milliseconds: 300),
                               reverseDuration: Duration(milliseconds: 300),
-                              child: HomepageWidget(),
+                              child: NavBarPage(initialPage: 'Homepage'),
                             ),
                           );
                         },

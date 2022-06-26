@@ -2,6 +2,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SwedishPageWidget extends StatefulWidget {
@@ -57,8 +58,8 @@ class _SwedishPageWidgetState extends State<SwedishPageWidget> {
                               color: FlutterFlowTheme.of(context).tertiaryColor,
                               boxShadow: [
                                 BoxShadow(
-                                  blurRadius: 10,
-                                  color: Color(0xC0101213),
+                                  blurRadius: 5,
+                                  color: Color(0xB157636C),
                                   offset: Offset(0, 5),
                                   spreadRadius: 0.5,
                                 )

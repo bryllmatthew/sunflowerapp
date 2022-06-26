@@ -1,4 +1,3 @@
-import '../admin_dashboard/admin_dashboard_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../components/signoutconfirmation_widget.dart';
@@ -7,6 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -317,40 +317,9 @@ class _GuestprofileWidgetState extends State<GuestprofileWidget> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    await Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 300),
-                        reverseDuration: Duration(milliseconds: 300),
-                        child: AdminDashboardWidget(),
-                      ),
-                    );
-                  },
-                  text: 'Admin Panel',
-                  options: FFButtonOptions(
-                    width: 130,
-                    height: 40,
-                    color: FlutterFlowTheme.of(context).primaryColor,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 12,
-                  ),
-                ),
-              ),
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0, 0.85),
+                  alignment: AlignmentDirectional(0, 0.5),
                   child: FFButtonWidget(
                     onPressed: () async {
                       await showModalBottomSheet(

@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../registerconfirm/registerconfirm_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUpWidget extends StatefulWidget {
@@ -412,6 +413,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 FlutterFlowTheme.of(context).subtitle2.override(
                                       fontFamily: 'Poppins',
                                       color: Colors.white,
+                                      fontSize: 14,
                                     ),
                             borderSide: BorderSide(
                               color: Colors.transparent,

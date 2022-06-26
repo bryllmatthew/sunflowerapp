@@ -1,11 +1,11 @@
 import '../components/bookingconfirmation_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TherapistprofileWidget extends StatefulWidget {
@@ -21,203 +21,252 @@ class TherapistprofileWidget extends StatefulWidget {
 }
 
 class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
-  double ratingBarValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30,
-          buttonSize: 48,
-          icon: Icon(
-            Icons.chevron_left_rounded,
-            color: Colors.white,
-            size: 30,
-          ),
-          onPressed: () async {
-            Navigator.pop(context);
-          },
-        ),
-        title: Text(
-          'Back to the lists',
-          style: FlutterFlowTheme.of(context).bodyText2.override(
-                fontFamily: 'Lexend Deca',
-                color: Color(0xFF0F0E0E),
-                fontSize: 14,
-                fontWeight: FontWeight.normal,
-              ),
-        ),
-        actions: [],
-        centerTitle: false,
-        elevation: 0,
-      ),
-      backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+      backgroundColor: Color(0xFFEFEEEE),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
+            Stack(
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.94,
-                    height: 350,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 6,
-                          color: Color(0x3E000000),
-                          offset: Offset(0, 2),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                        getJsonField(
-                          widget.id,
-                          r'''$.therapistimage''',
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 350,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 6,
+                            color: Color(0x3E000000),
+                            offset: Offset(0, 2),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                          topLeft: Radius.circular(0),
+                          topRight: Radius.circular(0),
                         ),
-                        width: MediaQuery.of(context).size.width * 0.96,
-                        fit: BoxFit.cover,
+                        child: Image.network(
+                          getJsonField(
+                            widget.id,
+                            r'''$.therapistimage''',
+                          ),
+                          width: MediaQuery.of(context).size.width * 0.96,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Align(
+                  alignment: AlignmentDirectional(-1, 0),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(15, 31, 0, 0),
+                    child: Icon(
+                      Icons.arrow_back_rounded,
+                      color: FlutterFlowTheme.of(context).black600,
+                      size: 28,
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(1, 0),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 25, 15, 0),
+                    child: ToggleIcon(
+                      onPressed: () async {
+                        setState(() =>
+                            FFAppState().favourite = !FFAppState().favourite);
+                      },
+                      value: FFAppState().favourite,
+                      onIcon: Icon(
+                        Icons.favorite,
+                        color: Colors.black,
+                        size: 25,
+                      ),
+                      offIcon: Icon(
+                        Icons.favorite_border,
+                        color: Colors.black,
+                        size: 25,
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-            RatingBar.builder(
-              onRatingUpdate: (newValue) =>
-                  setState(() => ratingBarValue = newValue),
-              itemBuilder: (context, index) => Icon(
-                Icons.star_rounded,
-                color: FlutterFlowTheme.of(context).secondaryColor,
-              ),
-              direction: Axis.horizontal,
-              initialRating: ratingBarValue ??= 5,
-              unratedColor: Color(0xFF9E9E9E),
-              itemCount: 5,
-              itemSize: 40,
-              glowColor: FlutterFlowTheme.of(context).secondaryColor,
-            ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Text(
-                      getJsonField(
-                        widget.id,
-                        r'''$.therapistname''',
-                      ).toString(),
-                      style: FlutterFlowTheme.of(context).title3.override(
-                            fontFamily: 'Lexend Deca',
-                            color: Color(0xFF0F0E0E),
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                  ),
-                  ToggleIcon(
-                    onPressed: () async {
-                      setState(() =>
-                          FFAppState().favourite = !FFAppState().favourite);
-                    },
-                    value: FFAppState().favourite,
-                    onIcon: Icon(
-                      Icons.favorite,
-                      color: Colors.black,
-                      size: 25,
-                    ),
-                    offIcon: Icon(
-                      Icons.favorite_border,
-                      color: Colors.black,
-                      size: 25,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(-0.9, 0),
-              child: Text(
-                getJsonField(
-                  widget.id,
-                  r'''$.location.name''',
-                ).toString(),
-                textAlign: TextAlign.start,
-                style: FlutterFlowTheme.of(context).bodyText1,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(16, 15, 16, 0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    getJsonField(
-                      widget.id,
-                      r'''$.age''',
-                    ).toString(),
-                    style: FlutterFlowTheme.of(context).bodyText2.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Color(0xFF8B97A2),
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        valueOrDefault<String>(
+                          getJsonField(
+                            widget.id,
+                            r'''$.therapistname''',
+                          ).toString(),
+                          'Name',
                         ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      Text(
+                        getJsonField(
+                          widget.id,
+                          r'''$.location.name''',
+                        ).toString(),
+                        textAlign: TextAlign.start,
+                        style: FlutterFlowTheme.of(context).bodyText1,
+                      ),
+                    ],
                   ),
-                  Text(
-                    '${getJsonField(
-                      widget.id,
-                      r'''$.hourlyrate''',
-                    ).toString()}/Hour',
-                    textAlign: TextAlign.end,
-                    style: FlutterFlowTheme.of(context).title3.override(
-                          fontFamily: 'Lexend Deca',
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Reviews',
+                        textAlign: TextAlign.start,
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                      ),
+                      RatingBarIndicator(
+                        itemBuilder: (context, index) => Icon(
+                          Icons.star_rounded,
                           color: FlutterFlowTheme.of(context).secondaryColor,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
                         ),
+                        direction: Axis.horizontal,
+                        rating: getJsonField(
+                          widget.id,
+                          r'''$.rating''',
+                        ),
+                        unratedColor: Color(0xFF9E9E9E),
+                        itemCount: 5,
+                        itemSize: 15,
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(16, 10, 16, 10),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Text(
-                      getJsonField(
-                        widget.id,
-                        r'''$.bio''',
-                      ).toString(),
-                      textAlign: TextAlign.start,
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Lexend Deca',
-                            color: Color(0xFF0F0E0E),
-                            fontSize: 14,
-                            fontWeight: FontWeight.normal,
-                            lineHeight: 1.5,
-                          ),
-                    ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Age',
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                      ),
+                      Text(
+                        getJsonField(
+                          widget.id,
+                          r'''$.age''',
+                        ).toString(),
+                        style: FlutterFlowTheme.of(context).bodyText1,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Rate',
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                      ),
+                      Text(
+                        'Php ${getJsonField(
+                          widget.id,
+                          r'''$.hourlyrate''',
+                        ).toString()} /Hour',
+                        textAlign: TextAlign.end,
+                        style: FlutterFlowTheme.of(context).title3.override(
+                              fontFamily: 'Lexend Deca',
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ],
                   ),
                 ],
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 10, 16, 0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'About',
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Poppins',
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      child: Text(
+                        valueOrDefault<String>(
+                          getJsonField(
+                            widget.id,
+                            r'''$.bio''',
+                          ).toString(),
+                          'about',
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -226,37 +275,39 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FFButtonWidget(
-                    onPressed: () async {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        context: context,
-                        builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.of(context).viewInsets,
-                            child: BookingconfirmationWidget(),
-                          );
-                        },
-                      );
-                    },
-                    text: 'Book now',
-                    options: FFButtonOptions(
-                      width: 170,
-                      height: 50,
-                      color: FlutterFlowTheme.of(context).secondaryColor,
-                      textStyle:
-                          FlutterFlowTheme.of(context).subtitle2.override(
-                                fontFamily: 'Lexend Deca',
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                      elevation: 3,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
+                  Expanded(
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: MediaQuery.of(context).viewInsets,
+                              child: BookingconfirmationWidget(),
+                            );
+                          },
+                        );
+                      },
+                      text: 'Book now',
+                      options: FFButtonOptions(
+                        width: 170,
+                        height: 50,
+                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        textStyle:
+                            FlutterFlowTheme.of(context).subtitle2.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                        elevation: 3,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1,
+                        ),
+                        borderRadius: 8,
                       ),
-                      borderRadius: 8,
                     ),
                   ),
                 ],

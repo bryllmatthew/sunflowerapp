@@ -3,10 +3,12 @@ import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../homepage/homepage_widget.dart';
+import '../main.dart';
 import '../therapistprofile/therapistprofile_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TherapistsWidget extends StatefulWidget {
@@ -32,7 +34,7 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
             await Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HomepageWidget(),
+                builder: (context) => NavBarPage(initialPage: 'Homepage'),
               ),
             );
           },
@@ -46,7 +48,7 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
           'Therapists',
           style: FlutterFlowTheme.of(context).title1.override(
                 fontFamily: 'Poppins',
-                color: Color(0xFF0F0E0E),
+                color: Colors.white,
                 fontSize: 20,
               ),
         ),
@@ -57,29 +59,45 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
       backgroundColor: Color(0xFFF5F5F5),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(16, 10, 16, 0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                FlutterFlowDropDown(
-                  options: ['Tagum City', 'Davao City'],
-                  onChanged: (val) => setState(() => dropDownValue = val),
-                  width: 180,
-                  height: 50,
-                  textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Poppins',
-                        color: Colors.black,
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                      child: FlutterFlowDropDown(
+                        options: ['Davao City'],
+                        onChanged: (val) => setState(() => dropDownValue = val),
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: 50,
+                        textStyle:
+                            FlutterFlowTheme.of(context).bodyText1.override(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.black,
+                                ),
+                        hintText: 'Select Location',
+                        fillColor: Colors.white,
+                        elevation: 2,
+                        borderColor: Color(0x00EDC215),
+                        borderWidth: 0,
+                        borderRadius: 0,
+                        margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
+                        hidesUnderline: true,
                       ),
-                  hintText: 'Select Location',
-                  fillColor: Colors.white,
-                  elevation: 2,
-                  borderColor: Color(0x00EDC215),
-                  borderWidth: 0,
-                  borderRadius: 0,
-                  margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
-                  hidesUnderline: true,
+                    ),
+                    FaIcon(
+                      FontAwesomeIcons.searchLocation,
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                      size: 30,
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
@@ -89,8 +107,13 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
                         return Center(
-                          child: LinearProgressIndicator(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: SpinKitChasingDots(
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                              size: 50,
+                            ),
                           ),
                         );
                       }
@@ -110,8 +133,8 @@ class _TherapistsWidgetState extends State<TherapistsWidget> {
                             itemBuilder: (context, theraIndex) {
                               final theraItem = thera[theraIndex];
                               return Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16, 12, 16, 0),
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 8, 0, 8),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,
                                   height: 120,

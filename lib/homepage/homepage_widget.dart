@@ -2,11 +2,12 @@ import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../guestprofile/guestprofile_widget.dart';
+import '../main.dart';
 import '../therapistprofile/therapistprofile_widget.dart';
 import '../therapists/therapists_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,7 +32,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0x00F1F4F8),
+      backgroundColor: Color(0xFFE4E4E4),
       drawer: Container(
         width: MediaQuery.of(context).size.width * 0.8,
         child: Drawer(
@@ -63,7 +64,8 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => GuestprofileWidget(),
+                            builder: (context) =>
+                                NavBarPage(initialPage: 'guestprofile'),
                           ),
                         );
                       },
@@ -390,7 +392,6 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                 controller: textController,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Address, city, state...',
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -476,8 +477,14 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
                           return Center(
-                            child: LinearProgressIndicator(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: SpinKitChasingDots(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                size: 50,
+                              ),
                             ),
                           );
                         }
@@ -603,8 +610,14 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
                           return Center(
-                            child: LinearProgressIndicator(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: SpinKitChasingDots(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                size: 50,
+                              ),
                             ),
                           );
                         }
