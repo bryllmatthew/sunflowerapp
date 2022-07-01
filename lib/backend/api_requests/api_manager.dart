@@ -158,7 +158,7 @@ class ApiManager {
     String body,
     BodyType bodyType,
     bool returnBody,
-    bool cache = false,
+    bool cache = true,
   }) async {
     final callRecord =
         ApiCallRecord(callName, apiUrl, headers, params, body, bodyType);
