@@ -164,7 +164,7 @@ class RegisterCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Register',
-      apiUrl: 'https://sunflower-backend-api.herokuapp.com/users',
+      apiUrl: 'https://sunflower-backend-api.herokuapp.com/v1/users',
       callType: ApiCallType.POST,
       headers: {},
       params: {

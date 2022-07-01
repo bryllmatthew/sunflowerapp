@@ -19,7 +19,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   ApiCallResponse registersuccess;
   TextEditingController emailController;
   TextEditingController firstnameController;
-  TextEditingController nameController;
+  TextEditingController lastnameController;
   TextEditingController usernameController;
   TextEditingController phoneNumberController;
   TextEditingController passwordController;
@@ -32,7 +32,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     super.initState();
     emailController = TextEditingController();
     firstnameController = TextEditingController();
-    nameController = TextEditingController();
+    lastnameController = TextEditingController();
     usernameController = TextEditingController();
     phoneNumberController = TextEditingController();
     passwordController = TextEditingController();
@@ -230,7 +230,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20, 10, 20, 0),
                                   child: TextFormField(
-                                    controller: nameController,
+                                    controller: lastnameController,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'Last Name',
@@ -429,7 +429,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               onPressed: () async {
                                 registersuccess = await RegisterCall.call(
                                   firstname: firstnameController.text,
-                                  lastname: nameController.text,
+                                  lastname: lastnameController.text,
                                   email: emailController.text,
                                   username: usernameController.text,
                                   phone: phoneNumberController.text,
