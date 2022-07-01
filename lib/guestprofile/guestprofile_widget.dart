@@ -67,7 +67,7 @@ class _GuestprofileWidgetState extends State<GuestprofileWidget> {
         centerTitle: true,
         elevation: 0,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFEEEEEE),
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
