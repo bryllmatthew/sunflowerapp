@@ -1,13 +1,20 @@
+import '../backend/api_requests/api_calls.dart';
 import '../bookingconfirmend/bookingconfirmend_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../sign_in/sign_in_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookingconfirmationWidget extends StatefulWidget {
-  const BookingconfirmationWidget({Key key}) : super(key: key);
+  const BookingconfirmationWidget({
+    Key key,
+    this.id,
+  }) : super(key: key);
+
+  final dynamic id;
 
   @override
   _BookingconfirmationWidgetState createState() =>
@@ -15,6 +22,9 @@ class BookingconfirmationWidget extends StatefulWidget {
 }
 
 class _BookingconfirmationWidgetState extends State<BookingconfirmationWidget> {
+  ApiCallResponse bookingsucess;
+  ApiCallResponse userdetails;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,15 +65,81 @@ class _BookingconfirmationWidgetState extends State<BookingconfirmationWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      await Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.fade,
-                          duration: Duration(milliseconds: 0),
-                          reverseDuration: Duration(milliseconds: 0),
-                          child: BookingconfirmendWidget(),
-                        ),
+                      userdetails = await GetProfileCall.call(
+                        id: FFAppState().userid,
                       );
+                      if ((userdetails?.succeeded ?? true)) {
+                        bookingsucess = await BookingCall.call(
+                          user: getJsonField(
+                            (userdetails?.jsonBody ?? ''),
+                            r'''$._id''',
+                          ).toString(),
+                          therapists: getJsonField(
+                            widget.id,
+                            r'''$._id''',
+                          ).toString(),
+                          total: 600,
+                        );
+                        if ((bookingsucess?.succeeded ?? true)) {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BookingconfirmendWidget(),
+                            ),
+                          );
+                        } else {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('Hi Guest'),
+                                content: Text(
+                                    'You need to login with your email and password!'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignInWidget(),
+                            ),
+                          );
+                        }
+                      } else {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('Hi Guest'),
+                              content: Text(
+                                  'You need to login with your email and password!'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                        await Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignInWidget(),
+                          ),
+                          (r) => false,
+                        );
+                      }
+
+                      setState(() {});
                     },
                     text: 'Confirm',
                     options: FFButtonOptions(
