@@ -282,7 +282,9 @@ class _TherapistprofileWidgetState extends State<TherapistprofileWidget> {
                           builder: (context) {
                             return Padding(
                               padding: MediaQuery.of(context).viewInsets,
-                              child: BookingconfirmationWidget(),
+                              child: BookingconfirmationWidget(
+                                id: widget.id,
+                              ),
                             );
                           },
                         );
