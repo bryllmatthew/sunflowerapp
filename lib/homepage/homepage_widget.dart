@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
+import '../search_result/search_result_widget.dart';
 import '../therapistprofile/therapistprofile_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class HomepageWidget extends StatefulWidget {
 }
 
 class _HomepageWidgetState extends State<HomepageWidget> {
+  ApiCallResponse searchresult;
   TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -302,17 +304,48 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
-                          child: Container(
-                            width: 60,
-                            height: 60,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
+                          child: FutureBuilder<ApiCallResponse>(
+                            future: GetProfileCall.call(
+                              id: FFAppState().userid,
                             ),
-                            child: Image.asset(
-                              'assets/images/logo.png',
-                              fit: BoxFit.cover,
-                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: SpinKitChasingDots(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      size: 50,
+                                    ),
+                                  ),
+                                );
+                              }
+                              final circleImageGetProfileResponse =
+                                  snapshot.data;
+                              return Container(
+                                width: 60,
+                                height: 60,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Image.network(
+                                  valueOrDefault<String>(
+                                    getJsonField(
+                                      (circleImageGetProfileResponse
+                                              ?.jsonBody ??
+                                          ''),
+                                      r'''$.image''',
+                                    ),
+                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sunflower-app-ypvor2/assets/p5cbw2noxji0/logo.png',
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ],
@@ -321,47 +354,62 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 12, 12, 16),
                     child: Column(
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                           child: Text(
-                            'Good',
+                            'Good Morning',
+                            textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context).title2.override(
                                   fontFamily: 'Poppins',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 35,
+                                  fontSize: 30,
                                   fontWeight: FontWeight.w600,
                                   lineHeight: 1,
                                 ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                          child: Text(
-                            'Morning!',
-                            style: FlutterFlowTheme.of(context).title2.override(
-                                  fontFamily: 'Poppins',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 35,
-                                  fontWeight: FontWeight.w600,
-                                  lineHeight: 1,
-                                ),
+                        FutureBuilder<ApiCallResponse>(
+                          future: GetProfileCall.call(
+                            id: FFAppState().userid,
                           ),
-                        ),
-                        Text(
-                          'Sunflower Massage',
-                          style: FlutterFlowTheme.of(context)
-                              .subtitle1
-                              .override(
-                                fontFamily: 'Poppins',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 14,
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child: SpinKitChasingDots(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    size: 50,
+                                  ),
+                                ),
+                              );
+                            }
+                            final textGetProfileResponse = snapshot.data;
+                            return Text(
+                              valueOrDefault<String>(
+                                getJsonField(
+                                  (textGetProfileResponse?.jsonBody ?? ''),
+                                  r'''$.firstname''',
+                                ).toString(),
+                                'Guest User',
                               ),
+                              style: FlutterFlowTheme.of(context)
+                                  .subtitle1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    fontSize: 18,
+                                  ),
+                            );
+                          },
                         ),
                       ],
                     ),
@@ -427,8 +475,37 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                             ),
                           ),
                           FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              searchresult = await SearchTherapistCall.call(
+                                columnValue: textController.text,
+                              );
+                              if ((searchresult?.succeeded ?? true)) {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SearchResultWidget(
+                                      id: (searchresult?.jsonBody ?? ''),
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Search Failed. Please Try Again!',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                  ),
+                                );
+                              }
+
+                              setState(() {});
                             },
                             text: '',
                             icon: Icon(

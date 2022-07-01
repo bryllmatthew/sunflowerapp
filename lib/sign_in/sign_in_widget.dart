@@ -1,3 +1,4 @@
+import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -15,6 +16,7 @@ class SignInWidget extends StatefulWidget {
 }
 
 class _SignInWidgetState extends State<SignInWidget> {
+  ApiCallResponse loginsuccess;
   TextEditingController emailAddressController;
   TextEditingController passwordController;
   bool passwordVisibility;
@@ -313,13 +315,49 @@ class _SignInWidgetState extends State<SignInWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          NavBarPage(initialPage: 'Homepage'),
-                                    ),
+                                  loginsuccess = await UserLoginCall.call(
+                                    username: emailAddressController.text,
+                                    password: passwordController.text,
                                   );
+                                  if ((loginsuccess?.succeeded ?? true)) {
+                                    setState(() =>
+                                        FFAppState().userid = getJsonField(
+                                          (loginsuccess?.jsonBody ?? ''),
+                                          r'''$.userData._id''',
+                                        ).toString());
+                                    await Navigator.pushAndRemoveUntil(
+                                      context,
+                                      PageTransition(
+                                        type: PageTransitionType.rightToLeft,
+                                        duration: Duration(milliseconds: 10),
+                                        reverseDuration:
+                                            Duration(milliseconds: 10),
+                                        child:
+                                            NavBarPage(initialPage: 'Homepage'),
+                                      ),
+                                      (r) => false,
+                                    );
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('Error'),
+                                          content: Text(
+                                              'Please enter a correct email and password.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Try Again!'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  }
+
+                                  setState(() {});
                                 },
                                 text: 'Login',
                                 options: FFButtonOptions(

@@ -1,14 +1,14 @@
-import '../auth/auth_util.dart';
+import '../backend/api_requests/api_calls.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../components/signoutconfirmation_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:share_plus/share_plus.dart';
 
 class GuestprofileWidget extends StatefulWidget {
   const GuestprofileWidget({Key key}) : super(key: key);
@@ -19,15 +19,21 @@ class GuestprofileWidget extends StatefulWidget {
 
 class _GuestprofileWidgetState extends State<GuestprofileWidget> {
   String uploadedFileUrl = '';
-  TextEditingController textController1;
   TextEditingController emailAddressController;
+  TextEditingController firstnameController;
+  TextEditingController lastanameController;
+  TextEditingController phonenumberController;
+  TextEditingController imageurlController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
     emailAddressController = TextEditingController(text: '[display_name]');
-    textController1 = TextEditingController(text: '[display_name]');
+    firstnameController = TextEditingController(text: '[display_name]');
+    lastanameController = TextEditingController(text: '[display_name]');
+    phonenumberController = TextEditingController(text: '[display_name]');
+    imageurlController = TextEditingController(text: uploadedFileUrl);
   }
 
   @override
@@ -39,7 +45,12 @@ class _GuestprofileWidgetState extends State<GuestprofileWidget> {
         automaticallyImplyLeading: false,
         leading: InkWell(
           onTap: () async {
-            Navigator.pop(context);
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NavBarPage(initialPage: 'Homepage'),
+              ),
+            );
           },
           child: Icon(
             Icons.arrow_back_rounded,
@@ -84,18 +95,50 @@ class _GuestprofileWidgetState extends State<GuestprofileWidget> {
                         color: Color(0xFFDBE2E7),
                         shape: BoxShape.circle,
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                        child: Container(
-                          width: 90,
-                          height: 90,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.network(
-                            currentUserPhoto,
-                            fit: BoxFit.fitWidth,
+                      child: Visibility(
+                        visible: /* NOT RECOMMENDED */ imageurlController
+                                    .text ==
+                                'true' ??
+                            true,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                          child: FutureBuilder<ApiCallResponse>(
+                            future: GetProfileCall.call(
+                              id: FFAppState().userid,
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: SpinKitChasingDots(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      size: 50,
+                                    ),
+                                  ),
+                                );
+                              }
+                              final circleImageGetProfileResponse =
+                                  snapshot.data;
+                              return Container(
+                                width: 90,
+                                height: 90,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Image.network(
+                                  valueOrDefault<String>(
+                                    uploadedFileUrl,
+                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sunflower-app-ypvor2/assets/p5cbw2noxji0/logo.png',
+                                  ),
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
@@ -111,9 +154,10 @@ class _GuestprofileWidgetState extends State<GuestprofileWidget> {
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        final selectedMedia = await selectMedia(
-                          mediaSource: MediaSource.photoGallery,
-                          multiImage: false,
+                        final selectedMedia =
+                            await selectMediaWithSourceBottomSheet(
+                          context: context,
+                          allowPhoto: true,
                         );
                         if (selectedMedia != null &&
                             selectedMedia.every((m) =>
@@ -170,156 +214,290 @@ class _GuestprofileWidgetState extends State<GuestprofileWidget> {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
-                child: TextFormField(
-                  controller: textController1,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    labelText: 'Full Name',
-                    labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Color(0xFF95A1AC),
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
+                      child: TextFormField(
+                        controller: firstnameController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Full Name',
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF95A1AC),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Your full name...',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF95A1AC),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                         ),
-                    hintText: 'Your full name...',
-                    hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Color(0xFF95A1AC),
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF14181B),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
+                      child: TextFormField(
+                        controller: lastanameController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Last Name',
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF95A1AC),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Your full name...',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF95A1AC),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                         ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFFDBE2E7),
-                        width: 2,
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF14181B),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
                       ),
-                      borderRadius: BorderRadius.circular(8),
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFFDBE2E7),
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Lexend Deca',
-                        color: Color(0xFF14181B),
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal,
-                      ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 12),
-                child: TextFormField(
-                  controller: emailAddressController,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    labelText: 'Email Address',
-                    labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Color(0xFF95A1AC),
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 12),
+                      child: TextFormField(
+                        controller: emailAddressController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Email Address',
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF95A1AC),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Your email..',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF95A1AC),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                         ),
-                    hintText: 'Your email..',
-                    hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Color(0xFF95A1AC),
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF14181B),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
+                      child: TextFormField(
+                        controller: phonenumberController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Phone Number',
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF95A1AC),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Your full name...',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF95A1AC),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                         ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFFDBE2E7),
-                        width: 2,
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF14181B),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
                       ),
-                      borderRadius: BorderRadius.circular(8),
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFFDBE2E7),
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Lexend Deca',
-                        color: Color(0xFF14181B),
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal,
-                      ),
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0, 0.05),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
-                    text: 'Save Changes',
-                    options: FFButtonOptions(
-                      width: 340,
-                      height: 60,
-                      color: FlutterFlowTheme.of(context).secondaryColor,
-                      textStyle:
-                          FlutterFlowTheme.of(context).subtitle2.override(
-                                fontFamily: 'Lexend Deca',
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.normal,
-                              ),
-                      elevation: 2,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
-                      ),
-                      borderRadius: 8,
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    await Share.share('');
-                  },
-                  text: 'Share to friends',
-                  options: FFButtonOptions(
-                    width: 340,
-                    height: 40,
-                    color: FlutterFlowTheme.of(context).secondaryColor,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
+                      child: TextFormField(
+                        controller: imageurlController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Image Url',
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF95A1AC),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF95A1AC),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                         ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF14181B),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
+                      ),
                     ),
-                    borderRadius: 12,
-                  ),
+                    Align(
+                      alignment: AlignmentDirectional(0, 0.05),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                        child: FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Save Changes',
+                          options: FFButtonOptions(
+                            width: 340,
+                            height: 60,
+                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            textStyle:
+                                FlutterFlowTheme.of(context).subtitle2.override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                            elevation: 2,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: 8,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0, 0.5),
+                  alignment: AlignmentDirectional(0, 0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       await showModalBottomSheet(
@@ -337,7 +515,7 @@ class _GuestprofileWidgetState extends State<GuestprofileWidget> {
                     options: FFButtonOptions(
                       width: 130,
                       height: 40,
-                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      color: Color(0xFFF10202),
                       textStyle:
                           FlutterFlowTheme.of(context).subtitle2.override(
                                 fontFamily: 'Poppins',
@@ -347,7 +525,7 @@ class _GuestprofileWidgetState extends State<GuestprofileWidget> {
                         color: Colors.transparent,
                         width: 1,
                       ),
-                      borderRadius: 12,
+                      borderRadius: 5,
                     ),
                   ),
                 ),

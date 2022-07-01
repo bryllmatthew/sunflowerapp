@@ -14,11 +14,19 @@ class FFAppState {
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
+    _userid = prefs.getString('ff_userid') ?? _userid;
   }
 
   SharedPreferences prefs;
 
   bool favourite = false;
+
+  String _userid = '';
+  String get userid => _userid;
+  set userid(String _value) {
+    _userid = _value;
+    prefs.setString('ff_userid', _value);
+  }
 }
 
 LatLng _latLngFromString(String val) {
