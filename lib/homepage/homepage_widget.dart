@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_greetings/flutter_greetings.dart';
 
 class HomepageWidget extends StatefulWidget {
   const HomepageWidget({Key key}) : super(key: key);
@@ -360,7 +361,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                           child: Text(
-                            'Good Morning',
+                            YonoGreetings.showGreetings(),
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context).title2.override(
                                   fontFamily: 'Poppins',
