@@ -19,3 +19,4 @@ export 'branches/branches_widget.dart' show BranchesWidget;
 export 'guestprofile/guestprofile_widget.dart' show GuestprofileWidget;
 export 'my_favorites/my_favorites_widget.dart' show MyFavoritesWidget;
 export 'cetegories/cetegories_widget.dart' show CetegoriesWidget;
+export 'search_result/search_result_widget.dart' show SearchResultWidget;

@@ -53,14 +53,13 @@ class _SignoutconfirmationWidgetState extends State<SignoutconfirmationWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
               child: FFButtonWidget(
                 onPressed: () async {
-                  await Navigator.push(
+                  setState(() => FFAppState().userid = '');
+                  await Navigator.pushAndRemoveUntil(
                     context,
-                    PageTransition(
-                      type: PageTransitionType.leftToRight,
-                      duration: Duration(milliseconds: 3),
-                      reverseDuration: Duration(milliseconds: 3),
-                      child: SignInWidget(),
+                    MaterialPageRoute(
+                      builder: (context) => SignInWidget(),
                     ),
+                    (r) => false,
                   );
                 },
                 text: 'YES',
