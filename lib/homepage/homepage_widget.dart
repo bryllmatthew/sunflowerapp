@@ -706,7 +706,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => NavBarPage(
-                                                initialPage: 'therapists'),
+                                                initialPage: 'Cetegories'),
                                           ),
                                         );
                                       },
@@ -719,66 +719,81 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                         ),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius: BorderRadius.only(
-                                                bottomLeft: Radius.circular(0),
-                                                bottomRight: Radius.circular(0),
-                                                topLeft: Radius.circular(10),
-                                                topRight: Radius.circular(10),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    NavBarPage(
+                                                        initialPage:
+                                                            'Cetegories'),
                                               ),
-                                              child: Image.asset(
-                                                'assets/images/Cream_Peach_Brown_Soft_Brown_White_Abstract_Minimalist_Massage_Treatment_Banner_Landscape.jpg',
-                                                height: 140,
-                                                fit: BoxFit.cover,
+                                            );
+                                          },
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(0),
+                                                  bottomRight:
+                                                      Radius.circular(0),
+                                                  topLeft: Radius.circular(10),
+                                                  topRight: Radius.circular(10),
+                                                ),
+                                                child: Image.asset(
+                                                  'assets/images/Cream_Peach_Brown_Soft_Brown_White_Abstract_Minimalist_Massage_Treatment_Banner_Landscape.jpg',
+                                                  height: 140,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 10, 0, 0),
-                                              child: Text(
-                                                getJsonField(
-                                                  categoriesItem,
-                                                  r'''$..name''',
-                                                ).toString(),
-                                                textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(10, 10, 0, 0),
+                                                child: Text(
+                                                  getJsonField(
+                                                    categoriesItem,
+                                                    r'''$..name''',
+                                                  ).toString(),
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 1, 0, 10),
-                                              child: Text(
-                                                getJsonField(
-                                                  categoriesItem,
-                                                  r'''$..description''',
-                                                ).toString(),
-                                                textAlign: TextAlign.start,
-                                                maxLines: 2,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(10, 1, 0, 10),
+                                                child: Text(
+                                                  getJsonField(
+                                                    categoriesItem,
+                                                    r'''$..description''',
+                                                  ).toString(),
+                                                  textAlign: TextAlign.start,
+                                                  maxLines: 2,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
