@@ -26,7 +26,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController(text: 'Search..');
+    textController = TextEditingController();
   }
 
   @override
@@ -448,6 +448,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
+                                  hintText: 'Therapist Name..',
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
