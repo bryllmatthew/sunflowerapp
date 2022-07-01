@@ -47,20 +47,47 @@ class _HomepageWidgetState extends State<HomepageWidget> {
               children: [
                 Align(
                   alignment: AlignmentDirectional(0, 0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: Image.network(
-                      'https://picsum.photos/seed/171/600',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
+                  child: FutureBuilder<ApiCallResponse>(
+                    future: GetProfileCall.call(
+                      id: FFAppState().userid,
                     ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: SpinKitChasingDots(
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                              size: 50,
+                            ),
+                          ),
+                        );
+                      }
+                      final imageGetProfileResponse = snapshot.data;
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.network(
+                          valueOrDefault<String>(
+                            getJsonField(
+                              (imageGetProfileResponse?.jsonBody ?? ''),
+                              r'''$.image''',
+                            ),
+                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sunflower-app-ypvor2/assets/p5cbw2noxji0/logo.png',
+                          ),
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                      );
+                    },
                   ),
                 ),
                 Align(
                   alignment: AlignmentDirectional(0, 0),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                     child: FFButtonWidget(
                       onPressed: () async {
                         await Navigator.push(
